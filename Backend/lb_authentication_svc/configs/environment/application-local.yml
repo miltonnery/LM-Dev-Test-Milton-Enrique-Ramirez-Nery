@@ -1,0 +1,48 @@
+server:
+  port: "91"
+
+endpoints:
+  login: /login
+
+datasource:
+  postgres:
+    driver: postgres
+    host: localhost
+    port: 5432
+    user: postgres
+    pass: postgres
+    dbname: postgres
+    sslmode: disable
+    schema: lm_security_1
+
+connection:
+  maxOpenConns: 50000
+  maxIdleCons: 50000
+  maxConnLifetime: 5000
+
+jwt:
+  claims:
+    standard:
+      audience: lm-bank
+      issuer: lm-bank
+      subject: lm_bank
+    custom:
+      name:  username
+  signature: signature
+
+cookie:
+  name: tkn
+
+messages:
+  request:
+  response:
+    login:
+      success: Login Successful!
+      failure:
+        bad-request: Bad Request
+        access-denied: Access Denied
+        unauthorized: Unauthorized
+        internal-server-error:
+          general: Something went wrong :/
+          jwt: There was a problem at JWT creation phase
+
