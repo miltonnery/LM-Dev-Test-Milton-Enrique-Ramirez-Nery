@@ -1,0 +1,32 @@
+server:
+  port: "90"
+
+messages:
+  request:
+  response:
+    pre-flight:
+      status:
+        accepted: Accepted
+    authorization:
+      failure:
+        bad-request: Bad Request
+        access-denied: Access Denied
+        unauthorized: Unauthorized
+        internal-server-error:
+          general: Sorry, Something went wrong :/
+          jwt: There is a problem with the JWT
+
+# GATEWAY MAPPING
+uris:
+- inputPath: /lifebank/login
+  method: POST
+  redirectionHost: localhost:91
+  redirectionPath: /login
+  accessLevel: 0
+  enabled: true
+- inputPath: /lifebank/home
+  method: POST
+  redirectionHost: localhost:91
+  redirectionPath: /home
+  accessLevel: 1
+  enabled: true
