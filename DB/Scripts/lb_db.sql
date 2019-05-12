@@ -97,6 +97,8 @@ CREATE TABLE life_bank_v1.beneficiary
     id            SERIAL UNIQUE NOT NULL,
     owner         INT,
     receiver      INT,
+    identifier    VARCHAR(100),
+    email         VARCHAR(30),
     active        BOOLEAN DEFAULT TRUE,
     created_date  TIMESTAMP,
     created_by    VARCHAR(50),
@@ -124,7 +126,6 @@ DROP TABLE IF EXISTS life_bank_v1.loan;
 CREATE TABLE life_bank_v1.loan
 (
     id            SERIAL UNIQUE NOT NULL,
-    product       INT,
     interest_rate NUMERIC(5, 2),
     amount        NUMERIC(8, 2),
     due_payment   TIMESTAMP,
@@ -139,7 +140,6 @@ DROP TABLE IF EXISTS life_bank_v1.credit_card;
 CREATE TABLE life_bank_v1.credit_card
 (
     id              SERIAL UNIQUE NOT NULL,
-    product         INT,
     card_number     varchar(16),
     good_thru       TIMESTAMP,
     cvv             varchar(3),

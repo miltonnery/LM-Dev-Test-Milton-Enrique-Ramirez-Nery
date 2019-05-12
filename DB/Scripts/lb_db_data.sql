@@ -54,14 +54,22 @@ INSERT INTO life_bank_v1.client (user_info, first_name, last_name, national_id, 
 VALUES (2, 'Juan', 'Perez', '0123456349', 'lifebankuser@mail.com', CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
 
 -- BENEFICIARY
-INSERT INTO life_bank_v1.beneficiary (owner, receiver, active, created_date, created_by, modified_date, modified_by)
-VALUES (1, 2, TRUE, CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
+--INSERT INTO life_bank_v1.beneficiary (owner, receiver, identifier, email, active, created_date, created_by, modified_date, modified_by)
+--VALUES (1, 2, 'ID3NT1F13R', 'beneficiateduser@mail.com',TRUE, CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
 
 -- ACCOUNT
 INSERT INTO life_bank_v1.account (number, name_id, created_date, created_by, modified_date, modified_by)
-VALUES ('00000000000000000001', 'jhondoe', CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
+VALUES ('00000000000000000001', 'account1', CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
 INSERT INTO life_bank_v1.account (number, name_id, created_date, created_by, modified_date, modified_by)
-VALUES ('00000000000000000002', 'juanperez', CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
+VALUES ('00000000000000000002', 'account2', CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
+INSERT INTO life_bank_v1.account (number, name_id, created_date, created_by, modified_date, modified_by)
+VALUES ('00000000000000000003', 'account3', CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
+INSERT INTO life_bank_v1.account (number, name_id, created_date, created_by, modified_date, modified_by)
+VALUES ('00000000000000000004', 'account4', CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
+INSERT INTO life_bank_v1.account (number, name_id, created_date, created_by, modified_date, modified_by)
+VALUES ('00000000000000000005', 'account5', CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
+INSERT INTO life_bank_v1.account (number, name_id, created_date, created_by, modified_date, modified_by)
+VALUES ('00000000000000000006', 'account6', CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
 
 -- LOAN
 INSERT INTO life_bank_v1.loan (interest_rate, amount, due_payment, created_date, created_by, modified_date, modified_by)
@@ -80,17 +88,18 @@ VALUES ('5678908734321234','2025-12-31 00:00:00','132', 30000.00, 25.90, 0.00, 2
 INSERT INTO life_bank_v1.contract (client, account, product, created_date, created_by, modified_date, modified_by)
 VALUES (1, 1, 1, CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
 INSERT INTO life_bank_v1.contract (client, account, product, created_date, created_by, modified_date, modified_by)
-VALUES (2, 1, 1, CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
+VALUES (2, 2, 1, CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
+
 -- Credit Card
-INSERT INTO life_bank_v1.contract (client, credit_card,  product, created_date, created_by, modified_date, modified_by)
-VALUES (1, 1, 3, CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
-INSERT INTO life_bank_v1.contract (client, credit_card,  product, created_date, created_by, modified_date, modified_by)
-VALUES (2, 2, 3, CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
+INSERT INTO life_bank_v1.contract (client, account, credit_card,  product, created_date, created_by, modified_date, modified_by)
+VALUES (1, 3, 1, 4, CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
+INSERT INTO life_bank_v1.contract (client, account, credit_card,  product, created_date, created_by, modified_date, modified_by)
+VALUES (2, 4, 2, 5, CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
 -- Loan
-INSERT INTO life_bank_v1.contract (client, loan,  product, created_date, created_by, modified_date, modified_by)
-VALUES (1, 1, 8, CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
-INSERT INTO life_bank_v1.contract (client, loan,  product, created_date, created_by, modified_date, modified_by)
-VALUES (2, 2, 8, CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
+INSERT INTO life_bank_v1.contract (client, account, loan,  product, created_date, created_by, modified_date, modified_by)
+VALUES (1, 5, 1, 8, CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
+INSERT INTO life_bank_v1.contract (client, account, loan,  product, created_date, created_by, modified_date, modified_by)
+VALUES (2, 6, 2, 8, CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
 
 -- TRANSACTIONS
 -- Accounts
@@ -107,4 +116,4 @@ INSERT INTO life_bank_v1.transaction (type, contract, identifier, amount, descri
 VALUES (1, 6, 'LNsdfssdfasdfsdfsfsdfwr', 2500.00, 'First step for a little project', CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
 -- Credit cards
 INSERT INTO life_bank_v1.transaction (type, contract, identifier, amount, description, created_date, created_by, modified_date, modified_by)
-VALUES (2, 3, 'CCsdfssdfasdfsdfsfsdfwr', 2500.00, 'First step for a little project', CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
+VALUES (2, 3, 'CCsdfssdfasdfsdfsfsdfwr', 2500.00, 'Amazon items', CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
