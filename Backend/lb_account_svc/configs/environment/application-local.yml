@@ -1,0 +1,31 @@
+server:
+  port: "92"
+
+endpoints:
+  products:
+    my-products: /my-products
+    product-transactions: /product-transactions/
+  beneficiary:
+    enrollment: /beneficiary-enrollment
+    email-update: /beneficiary-email-update
+    deletion: /beneficiary-deletion
+    disable: /beneficiary-disable
+    enable: /beneficiary-enable
+
+
+datasource:
+  postgres:
+    driver: postgres
+    host: localhost
+    port: 5432
+    user: postgres
+    pass: postgres
+    dbname: postgres
+    sslmode: disable
+    schema: life_bank_v1
+
+connection:
+  maxOpenConns: 50000
+  maxIdleCons: 50000
+  maxConnLifetime: 5000
+
