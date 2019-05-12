@@ -111,15 +111,13 @@ DROP TABLE IF EXISTS life_bank_v1.account;
 CREATE TABLE life_bank_v1.account
 (
     id            SERIAL UNIQUE NOT NULL,
-    product       INT,
     number        VARCHAR(20),
     name_id       VARCHAR(20),
     created_date  TIMESTAMP,
     created_by    VARCHAR(50),
     modified_date TIMESTAMP,
     modified_by   VARCHAR(50),
-    CONSTRAINT account_pk PRIMARY KEY (id),
-    CONSTRAINT account_product_fk FOREIGN KEY (product) REFERENCES life_bank_v1.product (id)
+    CONSTRAINT account_pk PRIMARY KEY (id)
 );
 
 DROP TABLE IF EXISTS life_bank_v1.loan;
@@ -134,8 +132,7 @@ CREATE TABLE life_bank_v1.loan
     created_by    VARCHAR(50),
     modified_date TIMESTAMP,
     modified_by   VARCHAR(50),
-    CONSTRAINT loan_pk PRIMARY KEY (id),
-    CONSTRAINT loan_product_fk FOREIGN KEY (product) REFERENCES life_bank_v1.product (id)
+    CONSTRAINT loan_pk PRIMARY KEY (id)
 );
 
 DROP TABLE IF EXISTS life_bank_v1.credit_card;
@@ -154,19 +151,35 @@ CREATE TABLE life_bank_v1.credit_card
     created_by      VARCHAR(50),
     modified_date   TIMESTAMP,
     modified_by     VARCHAR(50),
-    CONSTRAINT credit_card_pk PRIMARY KEY (id),
-    CONSTRAINT credit_card_product_fk FOREIGN KEY (product) REFERENCES life_bank_v1.product (id)
+    CONSTRAINT credit_card_pk PRIMARY KEY (id)
+);
+
+DROP TABLE IF EXISTS life_bank_v1.contract;
+CREATE TABLE life_bank_v1.contract
+(
+    id            SERIAL UNIQUE NOT NULL,
+    client        INT,
+    account       INT,
+    credit_card   INT,
+    loan          INT,
+    product       INT,
+    created_date  TIMESTAMP,
+    created_by    VARCHAR(50),
+    modified_date TIMESTAMP,
+    modified_by   VARCHAR(50),
+    CONSTRAINT contract_client_fk FOREIGN KEY (client) REFERENCES life_bank_v1.client (id),
+    CONSTRAINT contract_account_fk FOREIGN KEY (account) REFERENCES life_bank_v1.account (id),
+    CONSTRAINT contract_credit_card_fk FOREIGN KEY (credit_card) REFERENCES life_bank_v1.credit_card (id),
+    CONSTRAINT contract_loan_fk FOREIGN KEY (loan) REFERENCES life_bank_v1.loan (id),
+    CONSTRAINT contract_product_fk FOREIGN KEY (product) REFERENCES life_bank_v1.product (id)
 );
 
 DROP TABLE IF EXISTS life_bank_v1.transaction;
 CREATE TABLE life_bank_v1.transaction
 (
     id            SERIAL UNIQUE NOT NULL,
-    client        INT,
     type          INT,
-    account       INT,
-    credit_card   INT,
-    loan          INT,
+    contract      INT,
     identifier    VARCHAR(100),
     amount        NUMERIC(8, 2),
     description   VARCHAR(100),
@@ -175,11 +188,8 @@ CREATE TABLE life_bank_v1.transaction
     modified_date TIMESTAMP,
     modified_by   VARCHAR(50),
     CONSTRAINT transaction_pk PRIMARY KEY (id),
-    CONSTRAINT transaction_client_fk FOREIGN KEY (client) REFERENCES life_bank_v1.client (id),
-    CONSTRAINT transaction_credit_card_fk FOREIGN KEY (credit_card) REFERENCES life_bank_v1.credit_card (id),
-    CONSTRAINT transaction_loan_fk FOREIGN KEY (loan) REFERENCES life_bank_v1.loan (id),
     CONSTRAINT transaction_transaction_type_fk FOREIGN KEY (type) REFERENCES life_bank_v1.transaction_type (id),
-    CONSTRAINT transaction_account_fk FOREIGN KEY (account) REFERENCES life_bank_v1.account (id)
+    CONSTRAINT transaction_contract_fk FOREIGN KEY (contract) REFERENCES life_bank_v1.contract (id)
 );
 
 DROP INDEX IF EXISTS life_bank_v1.transaction_identifier_idx;
