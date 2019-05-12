@@ -7,8 +7,8 @@ DROP TABLE IF EXISTS life_bank_v1.product_type;
 CREATE TABLE life_bank_v1.product_type
 (
     id            SERIAL UNIQUE NOT NULL,
-    name          VARCHAR(50) NOT NULL,
-    description   VARCHAR(100) NOT NULL,
+    name          VARCHAR(50)   NOT NULL,
+    description   VARCHAR(100)  NOT NULL,
     created_date  TIMESTAMP,
     created_by    VARCHAR(50),
     modified_date TIMESTAMP,
@@ -20,8 +20,8 @@ DROP TABLE IF EXISTS life_bank_v1.role;
 CREATE TABLE life_bank_v1.role
 (
     id            SERIAL UNIQUE NOT NULL,
-    name          VARCHAR(50) NOT NULL,
-    description   VARCHAR(100) NOT NULL,
+    name          VARCHAR(50)   NOT NULL,
+    description   VARCHAR(100)  NOT NULL,
     created_date  TIMESTAMP,
     created_by    VARCHAR(50),
     modified_date TIMESTAMP,
@@ -33,8 +33,8 @@ DROP TABLE IF EXISTS life_bank_v1.transaction_type;
 CREATE TABLE life_bank_v1.transaction_type
 (
     id            SERIAL UNIQUE NOT NULL,
-    name          VARCHAR(50) NOT NULL,
-    description   VARCHAR(50) NOT NULL,
+    name          VARCHAR(50)   NOT NULL,
+    description   VARCHAR(50)   NOT NULL,
     created_date  TIMESTAMP,
     created_by    VARCHAR(50),
     modified_date TIMESTAMP,
@@ -47,8 +47,8 @@ CREATE TABLE life_bank_v1.product
 (
     id            SERIAL UNIQUE NOT NULL,
     type          INT,
-    name          VARCHAR(100) NOT NULL,
-    description   VARCHAR(100) NOT NULL,
+    name          VARCHAR(100)  NOT NULL,
+    description   VARCHAR(100)  NOT NULL,
     active        BOOLEAN,
     created_date  TIMESTAMP,
     created_by    VARCHAR(50),
@@ -62,9 +62,9 @@ DROP TABLE IF EXISTS life_bank_v1.user;
 CREATE TABLE life_bank_v1.user
 (
     id            SERIAL UNIQUE NOT NULL,
-    role          INT NOT NULL,
-    username      VARCHAR(20) NOT NULL,
-    password      VARCHAR(100) NOT NULL,
+    role          INT           NOT NULL,
+    username      VARCHAR(20)   NOT NULL,
+    password      VARCHAR(100)  NOT NULL,
     active        BOOLEAN DEFAULT TRUE,
     created_date  TIMESTAMP,
     created_by    VARCHAR(50),
@@ -78,17 +78,17 @@ DROP TABLE IF EXISTS life_bank_v1.client;
 CREATE TABLE life_bank_v1.client
 (
     id            SERIAL UNIQUE NOT NULL,
-    userinfo      INT,
+    user_info     INT,
     first_name    VARCHAR(50),
     last_name     VARCHAR(50),
     national_id   VARCHAR(20),
-    email         VARCHAR(50),
+    email         VARCHAR(30),
     created_date  TIMESTAMP,
     created_by    VARCHAR(50),
     modified_date TIMESTAMP,
     modified_by   VARCHAR(50),
     CONSTRAINT client_pk PRIMARY KEY (id),
-    CONSTRAINT client_user_fk FOREIGN KEY (userinfo) REFERENCES life_bank_v1.user (id)
+    CONSTRAINT client_user_fk FOREIGN KEY (user_info) REFERENCES life_bank_v1.user (id)
 );
 
 DROP TABLE IF EXISTS life_bank_v1.beneficiary;
@@ -149,7 +149,7 @@ CREATE TABLE life_bank_v1.credit_card
     card_limit      NUMERIC(8, 2),
     interest_rate   NUMERIC(5, 2),
     interest_amount NUMERIC(8, 2),
-    montly_cut      INT,
+    monthly_cut     INT,
     created_date    TIMESTAMP,
     created_by      VARCHAR(50),
     modified_date   TIMESTAMP,

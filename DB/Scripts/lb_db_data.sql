@@ -48,9 +48,9 @@ INSERT INTO life_bank_v1.user (role, username, password, active, created_date, c
 VALUES (1, 'lifebankuser', 'lifebankuserpass', true, CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
 
 -- CLIENTS
-INSERT INTO life_bank_v1.client (userinfo, first_name, last_name, national_id, email, created_date, created_by, modified_date, modified_by)
+INSERT INTO life_bank_v1.client (user_info, first_name, last_name, national_id, email, created_date, created_by, modified_date, modified_by)
 VALUES (1, 'Jhon', 'Doe', '0123456789', 'jhondoe@mail.com', CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
-INSERT INTO life_bank_v1.client (userinfo, first_name, last_name, national_id, email, created_date, created_by, modified_date, modified_by)
+INSERT INTO life_bank_v1.client (user_info, first_name, last_name, national_id, email, created_date, created_by, modified_date, modified_by)
 VALUES (2, 'Juan', 'Perez', '0123456349', 'lifebankuser@mail.com', CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
 
 -- BENEFICIARY
@@ -70,9 +70,9 @@ INSERT INTO life_bank_v1.loan (product, interest_rate, amount, due_payment, crea
 VALUES (8,7.50, 50000.00, '2025-12-31 00:00:00', CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
 
 -- CREDIT CARD
-INSERT INTO life_bank_v1.credit_card (product, card_number, good_thru, cvv, card_limit, interest_rate, interest_amount, montly_cut, created_date, created_by, modified_date, modified_by)
+INSERT INTO life_bank_v1.credit_card (product, card_number, good_thru, cvv, card_limit, interest_rate, interest_amount, monthly_cut, created_date, created_by, modified_date, modified_by)
 VALUES (4,'4321234567890873','2025-12-31 00:00:00','123', 30000.00, 25.90, 0.00, 25, CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
-INSERT INTO life_bank_v1.credit_card (product, card_number, good_thru, cvv, card_limit, interest_rate, interest_amount, montly_cut, created_date, created_by, modified_date, modified_by)
+INSERT INTO life_bank_v1.credit_card (product, card_number, good_thru, cvv, card_limit, interest_rate, interest_amount, monthly_cut, created_date, created_by, modified_date, modified_by)
 VALUES (4,'5678908734321234','2025-12-31 00:00:00','132', 30000.00, 25.90, 0.00, 25, CURRENT_TIMESTAMP, 'lb_configurator', CURRENT_TIMESTAMP, 'lb_configurator');
 
 -- TRANSACTIONS
