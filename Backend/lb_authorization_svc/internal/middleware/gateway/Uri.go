@@ -20,6 +20,12 @@ func Find(reqMethod string, reqUri string) (bool, *config.Uri) {
 		if uri.Method == "GET" {
 			uri.RedirectionPath = uri.RedirectionPath + req
 		}
+		if uri.Method == "PATCH" {
+			uri.RedirectionPath = uri.RedirectionPath + req
+		}
+		if uri.Method == "DELETE" {
+			uri.RedirectionPath = uri.RedirectionPath + req
+		}
 		return true, &uri
 	} else {
 		return false, &config.Uri{}

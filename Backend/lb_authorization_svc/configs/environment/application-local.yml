@@ -24,9 +24,35 @@ uris:
   redirectionPath: /login
   accessLevel: 0
   enabled: true
-- inputPath: /lifebank/home
-  method: POST
-  redirectionHost: localhost:91
-  redirectionPath: /home
+# Account microservice
+- inputPath: /lifebank/account-my-products
+  method: GET
+  redirectionHost: localhost:92
+  redirectionPath: /my-products
   accessLevel: 1
   enabled: true
+- inputPath: /lifebank/account-product-transactions
+  method: GET
+  redirectionHost: localhost:92
+  redirectionPath: /product-transactions
+  accessLevel: 1
+  enabled: true
+- inputPath: /lifebank/account-beneficiary-enrollment
+  method: POST
+  redirectionHost: localhost:92
+  redirectionPath: /beneficiary-enrollment
+  accessLevel: 1
+  enabled: true
+- inputPath: /lifebank/account-beneficiary-email-update
+  method: PATCH
+  redirectionHost: localhost:92
+  redirectionPath: /beneficiary-email-update
+  accessLevel: 1
+  enabled: true
+- inputPath: /lifebank/account-beneficiary-deletion
+  method: DELETE
+  redirectionHost: localhost:92
+  redirectionPath: /beneficiary-deletion
+  accessLevel: 1
+  enabled: true
+
